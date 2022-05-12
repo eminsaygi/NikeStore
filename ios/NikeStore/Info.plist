@@ -49,6 +49,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CarmenSans-Regular.otf</string>
+		<string>CarmenSans-SemiBold.otf</string>
+		<string>CarmenSans-Thin.otf</string>
+		<string>CocoGothic-Bold.ttf</string>
+		<string>CocoGothic.ttf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
