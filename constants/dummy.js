@@ -1,5 +1,5 @@
 // Dummy Data
-import {images} from '../constants'
+import {images} from '.'
 
 export const trending = [
   {
@@ -79,6 +79,6 @@ export const recently = [
   },
 ];
 
-const dummy = {trending, recently};
+const dummyData = {trending, recently};
 
-export default dummy;
+export default dummyData;
