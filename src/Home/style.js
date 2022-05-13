@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {images, dummyData, icons, COLORS, FONTS, SIZES} from '../../../constants';
+import {images, dummyData, icons, COLORS, FONTS, SIZES} from '../../constants';
 
 export default styles = StyleSheet.create({
   trendingButton: {

@@ -10,7 +10,7 @@ import {
 import {Svg, Polygon} from 'react-native-svg';
 import {BlurView} from '@react-native-community/blur';
 
-import {images, dummyData, icons, COLORS, FONTS, SIZES} from '../../../constants';
+import {images, dummyData, icons, COLORS, FONTS, SIZES} from '../../constants';
 import styles from './style';
 const Home = ({navigation}) => {
   const [showAddToBagModal, setShowAddToBagModal] = React.useState(false);

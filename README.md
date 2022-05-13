@@ -1,4 +1,4 @@
-# Crypto Wallet App
+# Nike Store
 
 > A NIKE STORE application developed with React Native.
 
