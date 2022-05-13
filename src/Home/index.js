@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  StyleSheet,
-  SafeAreaView,
   View,
   Text,
   Image,
@@ -12,16 +10,18 @@ import {
 import {Svg, Polygon} from 'react-native-svg';
 import {BlurView} from '@react-native-community/blur';
 
-import {images, dummy, icons, COLORS, FONTS, SIZES} from '../constants';
-
+import {images, dummyData, icons, COLORS, FONTS, SIZES} from '../../../constants';
+import styles from './style';
 const Home = ({navigation}) => {
   const [showAddToBagModal, setShowAddToBagModal] = React.useState(false);
   const [selectedItem, setSelectedItem] = React.useState(null);
   const [selectedSize, setSelectedSize] = React.useState('');
 
-  const [trending, setTrending] = React.useState(dummy.trending);
+  const [trending, setTrending] = React.useState(dummyData.trending);
 
-  const [recentlyViewed, setRecentlyViewed] = React.useState(dummy.recently)
+  const [recentlyViewed, setRecentlyViewed] = React.useState(
+    dummyData.recently,
+  );
 
   // Render
 
@@ -36,52 +36,26 @@ const Home = ({navigation}) => {
 
     return (
       <TouchableOpacity
-        style={{
-          height: 240,
-          width: 180,
-          justifyContent: 'center',
-          marginHorizontal: SIZES.base,
-          ...trendingStyle,
-        }}
+        style={[styles.trendingButton, {...trendingStyle}]}
         onPress={() => {
           setSelectedItem(item);
           setShowAddToBagModal(true);
         }}>
-        <Text style={{color: COLORS.gray, ...FONTS.h5}}>{item.type}</Text>
+        <Text style={styles.trendingTextType}>{item.type}</Text>
 
         <View
           style={[
-            {
-              flex: 1,
-              justifyContent: 'flex-end',
-              marginTop: SIZES.base,
-              borderTopLeftRadius: 10,
-              borderBottomLeftRadius: 10,
-              borderBottomRightRadius: 10,
-              marginRight: SIZES.padding,
-              paddingLeft: SIZES.radius,
-              paddingRight: SIZES.padding,
-              paddingBottom: SIZES.radius,
-              backgroundColor: item.bgColor,
-            },
+            styles.trendingView,
             styles.trendingShadow,
+            {backgroundColor: item.bgColor},
           ]}>
-          <View style={{height: '35%', justifyContent: 'space-between'}}>
-            <Text style={{color: COLORS.white, ...FONTS.body4}}>
-              {item.name}
-            </Text>
+          <View style={styles.trendingTextView}>
+            <Text style={styles.trendingTextViewName}>{item.name}</Text>
             <Text style={{color: COLORS.white, ...FONTS.h3}}>{item.price}</Text>
           </View>
         </View>
 
-        <View
-          style={{
-            position: 'absolute',
-            top: 27,
-            right: 0,
-            width: '95%',
-            height: '100%',
-          }}>
+        <View style={styles.viewEffects}>
           <Svg height="100%" width="100%">
             <Polygon points="0,0 160,0 160,80" fill="white" />
           </Svg>
@@ -90,14 +64,7 @@ const Home = ({navigation}) => {
         <Image
           source={item.img}
           resizeMode="cover"
-          style={{
-            position: 'absolute',
-            top: 50,
-            right: 0,
-            width: '98%',
-            height: 80,
-            transform: [{rotate: '-15deg'}],
-          }}
+          style={styles.imagesStyle}
         />
       </TouchableOpacity>
     );
@@ -139,19 +106,13 @@ const Home = ({navigation}) => {
       return (
         <TouchableOpacity
           key={index}
-          style={{
-            width: 35,
-            height: 25,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginHorizontal: 5,
-            marginBottom: 10,
-            backgroundColor:
-              selectedItem.sizes[index] == selectedSize ? COLORS.white : null,
-            borderWidth: 1,
-            borderColor: COLORS.white,
-            borderRadius: 5,
-          }}
+          style={[
+            styles.renderShoes,
+            {
+              backgroundColor:
+                selectedItem.sizes[index] == selectedSize ? COLORS.white : null,
+            },
+          ]}
           onPress={() => {
             setSelectedSize(item);
           }}>
@@ -342,41 +303,5 @@ const Home = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.white,
-  },
-  trendingShadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-
-    elevation: 7,
-  },
-  recentContainerShadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 7,
-    },
-    shadowOpacity: 0.43,
-    shadowRadius: 9.51,
-
-    elevation: 15,
-  },
-  absolute: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-});
 
 export default Home;
